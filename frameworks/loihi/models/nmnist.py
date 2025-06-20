@@ -46,7 +46,7 @@ class NMNISTDataset(Dataset):
         enable/disable automatic download, by default True
     """
     def __init__(
-        self, path='data',
+        self, path='../../shared/datasets/NMNIST',
         train=True,
         sampling_time=1, sample_length=300,
         transform=None, download=True,
@@ -54,11 +54,11 @@ class NMNISTDataset(Dataset):
         super(NMNISTDataset, self).__init__()
         self.path = path
         if train:
-            data_path = path + '/NMNIST/Train'
+            data_path = path + '/Train'
             source = 'https://www.dropbox.com/sh/tg2ljlbmtzygrag/'\
                 'AABlMOuR15ugeOxMCX0Pvoxga/Train.zip'
         else:
-            data_path = path + '/NMNIST/Test'
+            data_path = path + '/Test'
             source = 'https://www.dropbox.com/sh/tg2ljlbmtzygrag/'\
                 'AADSKgJ2CjaBWh75HnTNZyhca/Test.zip'
 
@@ -101,8 +101,8 @@ https://www.garrickorchard.com/datasets/n-mnist
         self.transform = transform
 
     def __getitem__(self, i):
-        filename = self.samples[i]
-        label = int(filename.split('/')[-2])
+        filename = os.path.normpath(str(self.samples[i]))
+        label = int(filename.split(os.path.sep)[-2])
         event = slayer.io.read_2d_spikes(filename)
         if self.transform is not None:
             event = self.transform(event)
@@ -180,7 +180,7 @@ class Network(torch.nn.Module):
 
 
 if __name__ == '__main__':
-    trained_folder = 'Trained'
+    trained_folder = '../models/Trained'
     os.makedirs(trained_folder, exist_ok=True)
 
     # device = torch.device('cpu')
