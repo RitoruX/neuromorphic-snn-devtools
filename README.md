@@ -51,7 +51,7 @@ neuromorphic-snn-devtools/
 
 1. **Clone the repo**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/RitoruX/neuromorphic-snn-devtools.git
    cd neuromorphic-snn-devtools
    ```
 
