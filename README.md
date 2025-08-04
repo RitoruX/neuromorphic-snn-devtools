@@ -1,97 +1,72 @@
 # Neuromorphic SNN Development Tools
 
-A comprehensive investigation of software development tools and frameworks for implementing Spiking Neural Networks (SNNs) on neuromorphic processors.
+This project explores how to build Spiking Neural Networks (SNNs) for neuromorphic hardware, using modern software tools. The main goal is to compare frameworks, learn what works best, and share practical tips for others interested in this field.
 
-## Project Overview
+## What’s Inside
 
-This repository contains the research, experiments, and analysis conducted for the MSc dissertation titled **"Investigating Software Development Tools for Neuromorphic Processors to Implement Spiking Neural Networks"** as part of the MSc Machine Learning & Deep Learning program at the University of Strathclyde.
+This repository is part of an MSc dissertation at the University of Strathclyde. It includes code, experiments, and notes about working with SNNs on neuromorphic processors.
 
-## 🎯 Research Objectives
+## Goals
 
-This project investigates and evaluates various software development tools and frameworks designed for neuromorphic computing, with a focus on:
+- Try out different neuromorphic frameworks
+- Build and train SNNs using real datasets
+- Compare performance and usability
+- Share what works, what doesn’t, and why
+- Make it easy for others to follow along
 
-- Comparative analysis of neuromorphic development frameworks
-- Implementation of Spiking Neural Networks using different tools
-- Performance evaluation and benchmarking
-- Assessment of developer experience and usability
-- Documentation of best practices and recommendations
+## Frameworks Used
 
-## 🧠 Neuromorphic Frameworks Investigated
+### Intel Lava
 
-### Intel's Lava Framework
-- **Location**: `notebooks/lava/`
-- **Description**: Intel's open-source framework for neuromorphic computing
-- **Notebooks**: 
-  - `00_lava_init.ipynb` - Environment verification and basic functionality
-  - `01_slayer_lavadl_nmnist.ipynb` - SLAYER integration with Lava-DL
+- Location: `frameworks/lava/notebooks/`
+- What it does: Open-source tools for building and running SNNs on Intel’s neuromorphic hardware
+- Example notebooks:
+  - `00_lava_init.ipynb`: Checks the environment and basic setup
+  - `01_slayer_lavadl_nmnist.ipynb`: Training SNNs with SLAYER and Lava-DL
+  - Other notebooks: Experiments with CIFAR10-DVS and DVS Gesture datasets
 
-### BrainChip's Akida
-- **Location**: `notebooks/akida/`
+### BrainChip Akida
 
-*(To be implemented)*
+- Location: `frameworks/akida/notebooks/`
+- What it does: Tools for building SNNs compatible with BrainChip’s Akida hardware
+- Example notebooks:
+  - `01_akida_cifar10_dvs.ipynb`: Training and evaluating Akida models on CIFAR10-DVS
+  - `02_akida_cifar10_dvs_sequential.ipynb`: Sequential training and evaluation
 
-## 📁 Repository Structure
+## Folder Structure
 
 ```
 neuromorphic-snn-devtools/
-├── README.md                   # Project documentation
-├── LICENSE                     # Project license
-├── environment.yml             # Conda environment configuration
-├── data/                       # Datasets and data files
-└── notebooks/                  # Jupyter notebooks with experiments
-    ├── lava/                   # Intel Lava framework experiments
-    │   ├── 00_lava_init.ipynb  # Environment verification
-    │   └── 01_slayer_lavadl_nmnist.ipynb  # SLAYER-based SNN training
-    └── akida/                  # BrainChip Akida experiments
+├── README.md
+├── LICENSE
+├── envs/                  # Environment configs for Lava and Akida
+├── frameworks/
+│   ├── akida/             # Akida models, notebooks, images
+│   └── lava/              # Lava models, notebooks, images
+├── shared/                # Common code (datasets, training, monitoring)
+└── datasets/              # DVS Gesture, CIFAR10-DVS, NMNIST data
 ```
-*(To be implemented)*
 
-## 🚀 Getting Started
+## Getting Started
 
-### Prerequisites
-
-- Python 3.8 or higher
-- Conda or Miniconda
-- Jupyter Notebook/Lab
-
-### Installation
-
-1. **Clone the repository**:
+1. **Clone the repo**
    ```bash
    git clone <repository-url>
    cd neuromorphic-snn-devtools
    ```
 
-2. **Create and activate the conda environment**:
+2. **Set up your environment**
    ```bash
-   conda env create -f environment.yml
-   conda activate neuromorphic-snn
-   ```
-
-3. **Launch Jupyter**:
-   ```bash
-   jupyter notebook
+   conda env create -f envs/akida.yaml   # or envs/loihi.yaml for Lava
+   conda activate akida-env              # or loihi-env for Lava
    ```
 
 
-## 📊 Experiments and Analysis
+## Experiments
 
-*(TODO)*
-
-## 🔬 Research Methodology
-
-1. **Literature Review**: Comprehensive survey of neuromorphic computing tools
-2. **Hands-on Implementation**: Practical development using each framework
-3. **Performance Evaluation**: Benchmarking and comparative analysis
-4. **Usability Assessment**: Developer experience and learning curve evaluation
-5. **Documentation**: Best practices and recommendations
-
-## 📈 Key Findings
-
-*(TODO)*
-
-## 📚 References
-
-*(TODO)*
+- SNN training and evaluation on DVS Gesture and CIFAR10-DVS datasets
+- Model conversion and benchmarking for Lava and Akida
+- Early stopping, system monitoring, and learning curve plotting
+- Troubleshooting common issues (shape, dtype, memory, plotting)
 
 ---
